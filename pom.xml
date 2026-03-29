@@ -81,7 +81,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!-- <configuration>
+				<configuration>
 					<image>
 						<name>${registryUsername}/${project.name}:${project.version}</name>
 						<publish>false</publish>
@@ -93,7 +93,7 @@
 							<url>${docker.publishRegistry.url}</url>
 						</publishRegistry>
 					</docker>
-				</configuration> -->
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
