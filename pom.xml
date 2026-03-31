@@ -29,7 +29,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2025.1.0</spring-cloud.version>
-		<registryUsername></registryUsername>
+		<registryUsername>placeholder</registryUsername>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -88,8 +88,11 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>${registryUsername}/${project.name}:${project.version}</name>
-						<publish>false</publish>
+						<name>${registerUsername}/${project.name}:${project.version}</name>
+						<publish>true</publish>
+						<env>
+							<BP_JVM_VERSION>17</BP_JVM_VERSION>
+						</env>
 					</image>
 					<docker>
 						<publishRegistry>
