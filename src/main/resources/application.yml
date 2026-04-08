@@ -24,3 +24,19 @@ spring:
     username: user
     password: password
     connection-timeout: 5s
+
+management:
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health, prometheus, info, env, functions, heapdump, info, loggers, mappings, configprops, bindings
+  metrics:
+    tags:
+      application: ${spring.application.name}
