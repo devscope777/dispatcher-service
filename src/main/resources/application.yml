@@ -36,7 +36,19 @@ management:
     web:
       exposure:
         include:
-          - health, prometheus, info, env, functions, heapdump, info, loggers, mappings, configprops, bindings
+          [
+            health,
+            prometheus,
+            info,
+            env,
+            functions,
+            heapdump,
+            info,
+            loggers,
+            mappings,
+            configprops,
+            bindings,
+          ]
   metrics:
     tags:
       application: ${spring.application.name}

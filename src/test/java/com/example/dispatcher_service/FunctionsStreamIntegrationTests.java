@@ -18,28 +18,29 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Import(TestChannelBinderConfiguration.class)
 public class FunctionsStreamIntegrationTests {
 
-    @Autowired
-    private InputDestination input;
+        @Autowired
+        private InputDestination input;
 
-    @Autowired
-    private OutputDestination output;
+        @Autowired
+        private OutputDestination output;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+        @Autowired
+        private ObjectMapper objectMapper;
 
-    @Test
-    void whenOrderAcceptedThenDispatched() {
-        long orderId = 121;
+        @Test
+        void whenOrderAcceptedThenDispatched() {
+                long orderId = 121;
 
-        Message<OrderAcceptedMessage> inputMessage = MessageBuilder.withPayload(new OrderAcceptedMessage(orderId))
-                .build();
+                Message<OrderAcceptedMessage> inputMessage = MessageBuilder
+                                .withPayload(new OrderAcceptedMessage(orderId))
+                                .build();
 
-        Message<OrderDispatchedMessage> expectedMessage = MessageBuilder
-                .withPayload(new OrderDispatchedMessage(orderId)).build();
+                Message<OrderDispatchedMessage> expectedMessage = MessageBuilder
+                                .withPayload(new OrderDispatchedMessage(orderId)).build();
 
-        this.input.send(inputMessage);
+                this.input.send(inputMessage);
 
-        assertThat(objectMapper.readValue(output.receive().getPayload(), OrderDispatchedMessage.class))
-                .isEqualTo(expectedMessage.getPayload());
-    }
+                assertThat(objectMapper.readValue(output.receive().getPayload(), OrderDispatchedMessage.class))
+                                .isEqualTo(expectedMessage.getPayload());
+        }
 }
