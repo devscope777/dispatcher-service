@@ -1,3 +1,7 @@
+server:
+  port: 9003
+  netty:
+    connection-timeout: 2s
 spring:
   application:
     name: dispatcher-service
